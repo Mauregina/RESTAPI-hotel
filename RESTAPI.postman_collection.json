@@ -33,7 +33,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:5000/hoteis/delta",
+					"raw": "http://127.0.0.1:5000/hoteis/alpha",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -44,7 +44,7 @@
 					"port": "5000",
 					"path": [
 						"hoteis",
-						"delta"
+						"alpha"
 					]
 				}
 			},
@@ -68,7 +68,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Alpha Hotel\",\r\n    \"estrelas\": 5.0,\r\n    \"diaria\": 200.0,\r\n    \"cidade\": \"Natal\"\r\n}",
+					"raw": "{\r\n    \"nome\": \"Gama Hotel\",\r\n    \"estrelas\": 3.0,\r\n    \"diaria\": 300.0,\r\n    \"cidade\": \"Recife\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -76,7 +76,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/hoteis/alpha",
+					"raw": "http://127.0.0.1:5000/hoteis/gama",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -87,7 +87,7 @@
 					"port": "5000",
 					"path": [
 						"hoteis",
-						"alpha"
+						"gama"
 					]
 				}
 			},
@@ -148,7 +148,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://127.0.0.1:5000/hoteis/beta",
+					"raw": "http://127.0.0.1:5000/hoteis/alpha",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -159,7 +159,7 @@
 					"port": "5000",
 					"path": [
 						"hoteis",
-						"beta"
+						"alpha"
 					]
 				}
 			},

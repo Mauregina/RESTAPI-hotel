@@ -2,10 +2,81 @@ from ast import arguments
 from flask_restful import Resource, reqparse
 from models.hotel import HotelModel
 from flask_jwt_extended import jwt_required
+import sqlite3
+
+def normalize_path_params(cidade=None, estrelas_min = 0.0, estrelas_max = 5.0, diaria_min = 0.0, diaria_max = 10000.00, limit = 50, offset = 0, **dados):
+    if cidade:
+        return {
+            'cidade': cidade,
+            'estrelas_min': estrelas_min, 
+            'estrelas_max': estrelas_max, 
+            'diaria_min': diaria_min, 
+            'diaria_max': diaria_max,
+            'limit': limit, 
+            'offset': offset
+        }
+
+    return {
+        'estrelas_min': estrelas_min, 
+        'estrelas_max': estrelas_max, 
+        'diaria_min': diaria_min, 
+        'diaria_max': diaria_max,
+        'limit': limit, 
+        'offset': offset
+    }        
+
+#path /hoteis?cidade=Recife&estrelas_min=2&estrelas_max=4&diaria_min=100&diaria_max=400
+path_params = reqparse.RequestParser()
+path_params.add_argument('cidade', type=str)
+path_params.add_argument('estrelas_min', type=float)
+path_params.add_argument('estrelas_max', type=float)
+path_params.add_argument('diaria_min', type=float)
+path_params.add_argument('diaria_max', type=float)
+path_params.add_argument('limit', type=int) #qtd itens a serem exibidos por pagina
+path_params.add_argument('offset', type=int) #qtd itens que deseja pular
 
 class Hoteis(Resource):
     def get(self):
-        return {'hoteis': [hotel.json() for hotel in HotelModel.query.all()]}
+        connection = sqlite3.connect('banco.db')
+        cursor = connection.cursor()
+
+        dados = path_params.parse_args()
+        #filtra variaveis que nao foram passadas na requisicao
+        dados_validos = {chave:dados[chave] for chave in dados if dados[chave] is not None}
+        print('dados_validos', dados_validos)
+        parametros = normalize_path_params(**dados_validos)
+        print('parametros', parametros)
+         
+        if parametros.get('cidade'):
+            consulta = 'SELECT * FROM hoteis \
+                         WHERE cidade = ? \
+                           AND (estrelas >= ? and estrelas <= ?) \
+                           AND (diaria >= ? and diaria <= ?) \
+                         LIMIT ? OFFSET ?'
+            tupla = tuple([parametros[chave] for chave in parametros])
+            resultado = cursor.execute(consulta, tupla)
+        else:                         
+            consulta = 'SELECT * FROM hoteis \
+                         WHERE (estrelas >= ? and estrelas <= ?) \
+                           AND (diaria >= ? and diaria <= ?) \
+                         LIMIT ? OFFSET ?'
+            tupla = tuple([parametros[chave] for chave in parametros])
+            resultado = cursor.execute(consulta, tupla) 
+
+        print('consulta', consulta)
+        print('tupla', tupla)
+
+        hoteis = []
+        for linha in resultado:
+            hoteis.append({
+            'hotel_id': linha[0],
+            'nome': linha[1],
+            'estrelas': linha[2],  
+            'diaria': linha[3], 
+            'cidade': linha[4]   
+        })
+
+        return {'hoteis': hoteis}
 
 class Hotel(Resource):
     atributos = reqparse.RequestParser()   
