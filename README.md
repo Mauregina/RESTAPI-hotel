@@ -26,4 +26,6 @@ pip install -r requirements.txt
 
 ## Outros
 
+ExemploConsumindoAPI.py
+
 https://www.restapitutorial.com/httpstatuscodes.html
