@@ -28,28 +28,6 @@
 			"response": []
 		},
 		{
-			"name": "/hoteis",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:5000/hoteis",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						"hoteis"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "/sites/{url}",
 			"request": {
 				"method": "GET",
@@ -84,7 +62,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://127.0.0.1:5000/sites/meusite.com",
+					"raw": "http://127.0.0.1:5000/sites/meusiteum.com",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -95,7 +73,7 @@
 					"port": "5000",
 					"path": [
 						"sites",
-						"meusite.com"
+						"meusiteum.com"
 					]
 				}
 			},
@@ -119,6 +97,28 @@
 					"path": [
 						"sites",
 						"meusite.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/hoteis",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hoteis",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hoteis"
 					]
 				}
 			},
@@ -165,7 +165,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Cinco Hotel\",\r\n    \"estrelas\": 4.0,\r\n    \"diaria\": 400.0,\r\n    \"cidade\": \"Olinda\",\r\n    \"site_id\": 1\r\n}",
+					"raw": "{\r\n    \"nome\": \"Meu Hotel\",\r\n    \"estrelas\": 3.0,\r\n    \"diaria\": 300.0,\r\n    \"cidade\": \"Recife\",\r\n    \"site_id\": 2\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -173,7 +173,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/hoteis/cinco",
+					"raw": "http://127.0.0.1:5000/hoteis/meuhotel",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -184,7 +184,7 @@
 					"port": "5000",
 					"path": [
 						"hoteis",
-						"cinco"
+						"meuhotel"
 					]
 				}
 			},
@@ -316,6 +316,29 @@
 					"port": "5000",
 					"path": [
 						"usuarios",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/confirmacao/{user_id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/confirmacao/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"confirmacao",
 						"1"
 					]
 				}
