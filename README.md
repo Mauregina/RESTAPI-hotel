@@ -1,20 +1,19 @@
 # REST API de Reserva e Comparação de Hotéis
-<p align="justify">O documento <b>Documentacao_RESTAPI_Hoteis.pdf</b> explicita com exemplos, como utilizar os recursos disponíveis nesta REST API. Assim como, as formas de se realizar uma requisição e suas possíveis respostas.</p>
+<p align="justify">The document <b>Documentation_RESTAPI_Hotels.pdf</b> explains with examples how to use the resources available in this REST API. It also provides details on how to make requests and possible responses.</p>
 
-## APIs disponíveis:
+## API
+- Hotel Query
+- User Registration
+- User Login
+- Hotel Registration
+- Hotel Update
+- Hotel Deletion
+- User Logout
+- User Login
+- User Data Query
+- User Deletion
 
-* Consulta de Hotéis
-* Cadastro de Usuário
-* Login de Usuário
-* Cadastro de Hotel
-* Atualização de Hotel
-* Deleção Hotel
-* Logout de Usuário
-* Login de Usuário
-* Consulta dos dados de Usuário
-* Deleção Usuário
-
-## Ferramentas
+## Tools
 
 * Visual Studio SCode
 * Python 3.9.10
@@ -25,7 +24,7 @@
 pip install -r requirements.txt 
 ```
 
-## Outros
+## Others
 
 ExemploConsumindoAPI.py
 
